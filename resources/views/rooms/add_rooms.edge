@@ -1,0 +1,42 @@
+@include('layouts/header')
+    <h1>Add Room</h1>
+    <form action="/rooms/add/post" method="post" class='mt-3'>
+        {{ csrfField() }}
+        <div class="form-group">
+            <label for="">Nama Ruangan</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Dekorasi</label>
+            <select name="isDecorated" id="" class="form-control">
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">Tipe Ruangan</label>
+            <select name="room_types_id" class="form-control">
+                @each(type in types)
+                <option value="{{type.id}}">{{type.type}}</option>
+                @endeach               
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="">Harga</label>
+            <input type="number" name="price" id="" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Fasilitas Tambahan</label>
+            <textarea name="facility" id="" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Owner</label>
+            <select name="owners_id" class="form-control">
+                @each(owner in owners)
+                <option value="{{owner.id}}">{{owner.name}}</option>
+                @endeach               
+            </select>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary mb-3">
+    </form>
+@include('layouts/footer')

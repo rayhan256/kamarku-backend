@@ -1,0 +1,45 @@
+@include('layouts/header')
+@if(flashMessage('notification'))
+<div class="alert alert-success fade show">
+  {{flashMessage('notification')}}
+</div>
+@endif
+
+<h1>Room Types</h1>
+<a href="/room_type/add" class="btn btn-outline-primary mt-2 mb-4">Add Type</a>
+<div class="table-responsive">
+  <table class="table" id="room_type">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Tipe</th>
+        <th>Deskripsi</th>
+        <th>Kapasitas</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(roomType in data)
+      <tr>
+        <td>{{($loop.index + 1)}}</td>
+        <td>{{roomType.type || 'Kosong'}}</td>
+        <td>{{roomType.desc || 'Kosong'}}</td>
+        <td>{{roomType.capacity || 'Kosong'}} Orang</td>
+        <td>
+          <a href="/room_type/update/{{roomType.id}}" class="btn btn-outline-primary">Update</a>
+          <a href="/room_type/delete/{{roomType.id}}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      @endeach
+    </tbody>
+  </table>
+</div>
+@include('layouts/footer')
+<script>
+  $('#room_type').dataTable()
+
+  setTimeout(() => {
+    $('.alert').alert('close')
+  }, 3000);
+
+</script>

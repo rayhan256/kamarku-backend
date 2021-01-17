@@ -1,0 +1,31 @@
+@include('layouts/header')
+    <div class="container">
+    <h1 class="mb-4">Add Data</h1>
+    <form action="/article/add/post" method="post" enctype="multipart/form-data">
+        {{ csrfField() }}
+        <div class="form-group">
+            <label for="">Judul</label>
+            <input type="text" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Content</label>
+            <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Gambar</label>
+            <input type="file" name="image" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Author/Penulis</label>
+            <input type="text" name="author" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Tanggal</label>
+            <input type="date" name="date" class="form-control">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+    </form>
+</div>
+@include('layouts/footer')

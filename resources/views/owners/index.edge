@@ -1,0 +1,49 @@
+@include('layouts/header')
+@if(flashMessage('notification'))
+<div class="alert alert-success show fade">
+  {{flashMessage('notification')}}
+</div>
+@endif
+
+<h1 class="mt-2">Owners</h1>
+<a href="/owners/add" class="btn btn-outline-primary">Add Room</a>
+
+<div class="table-responsive mt-4">
+  <table class="table shadow rounded" id="owner">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th>No</th>
+        <th>Nama Owner</th>
+        <th>Alamat</th>
+        <th>Jenis Kelamin</th>
+        <th>Handphone</th>
+        <th>Email</th>
+        <th>Action</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="bg-white text-dark">
+        @each(owner in owners)
+        <tr>
+            <td>{{($loop.index + 1)}}</td>
+            <td>{{owner.name}}</td>
+            <td>{{owner.address}}</td>
+            <td>{{owner.gender}}</td>
+            <td>{{owner.phone}}</td>
+            <td>{{owner.email}}</td>
+            <td><a href="/owners/update/{{owner.id}}" class="btn btn-primary">Update</a></td>
+            <td><a href="/owners/delete/{{owner.id}}" class="btn btn-danger">Delete</a></td>
+          </tr>
+        @endeach 
+    </tbody>
+  </table>
+</div>
+@include('layouts/footer')
+<script>
+  $('#owner').dataTable()
+
+  setTimeout(() => {
+    $('.alert').alert('close') 
+  }, 5000);
+  
+</script>

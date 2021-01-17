@@ -1,0 +1,50 @@
+@include('layouts.header')
+
+@if(flashMessage('notification'))
+<div class="alert alert-success">
+  {{flashMessage('notification')}}
+</div>
+@elseif(flashMessage('error'))
+<div class="alert alert-danger">
+  {{flashMessage('error')}}
+</div>
+@endif
+
+
+<h1 class="mb-3">Article</h1>
+<a href="/article/add" class="btn btn-outline-primary">Tambah Article</a>
+<div class="table-responsive mt-3">
+  <table class="table" id="article">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Image</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(article in articles)
+      <tr>
+        <td>{{article.id}}</td>
+        <td>{{article.title}}</td>
+        <td>{{article.content}}</td>
+        <td><img src="{{assetsUrl('uploads/articles/'+article.image)}}" alt="" width="200" height="200"></td>
+        <td>{{article.date}}</td>
+        <td>
+          <a href="/artice/update/{{article.id}}" class="btn btn-primary btn-sm">Update</a>
+          <a href="/article/delete/{{article.id}}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+      @endeach
+
+    </tbody>
+  </table>
+</div>
+@include('layouts.footer')
+<script>
+  $('#article').dataTable()
+
+</script>

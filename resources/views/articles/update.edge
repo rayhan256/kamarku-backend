@@ -1,0 +1,28 @@
+@include('layouts/header')
+    <h1 class="mb-3">Update Article</h1>
+    <form action="/article/update" method="post" enctype="multipart/form-data">
+        {{ csrfField() }}
+        <input type="hidden" class="" name="id" value="{{articles.id}}">
+        <div class="form-group">
+            <label for="">Judul</label>
+            <input type="text" class="form-control" name="title" value="{{articles.title}}">
+        </div>
+        <div class="form-group">
+            <label for="">Content</label>
+            <input type="text" class="form-control" name="content" value="{{articles.content}}">
+        </div>
+        <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" class="form-control" name="image" value="{{articles.image}}">
+        </div>
+        <div class="form-group">
+            <label for="">Author / Penulis</label>
+            <input type="text" class="form-control" name="author" value="{{articles.author}}">
+        </div>
+        <div class="form-group">
+            <label for="">Tanggal</label>
+            <input type="date" class="form-control" name="date" value="{{articles.date}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Article</button>
+    </form>
+@include('layouts/footer')

@@ -1,0 +1,48 @@
+@include('layouts/header')
+    @if(flashMessage('notification'))
+      <div class="alert alert-success fade show">
+          {{flashMessage('notification')}}
+      </div>
+    @endif
+
+    <h1>Rooms</h1>
+    <a href="/rooms/add" class="btn btn-outline-primary">Add Rooms</a>
+    <div class="table-responsive mt-4">
+        <table class="table shadow rounded" id="rooms">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>No</th>
+                    <th>Room Name</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Full Decorated</th>
+                    <th>Booked Status</th>
+                    <th>Owner</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="bg-white text-dark">
+                @each(room in rooms)
+                <tr>
+                    <td>{{($loop.index + 1)}}</td>
+                    <td>{{room.name}}</td>
+                    <td>{{room.room_types.type}}</td>
+                    <td>Rp. {{room.price}}</td>
+                    <td>{{room.isDecorated == 1 ? 'Yes' : 'No'}}</td>
+                    <td>{{room.status}}</td>
+                    <td>{{room.owners.name}}</td>
+                    <td><a href="/rooms/update/{{room.id}}" class="btn btn-primary">Update</a></td>
+                    <td><a href="/rooms/delete/{{room.id}}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                @endeach     
+            </tbody>
+        </table>
+    </div>
+@include('layouts/footer')
+<script>
+    $('#rooms').dataTable()
+    setTimeout(() => {
+        $('.alert').alert('close')
+    }, 5000);   
+</script>
