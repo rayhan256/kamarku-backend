@@ -14,6 +14,9 @@ Route.group(() => {
 //home
 Route.get('/', 'DashboardController.index')
 
+//auth
+Route.get('/login', 'AuthController.loginView')
+
 
 //article
 Route.get('/article', 'ArticleController.index')

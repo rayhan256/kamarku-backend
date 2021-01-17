@@ -22,7 +22,12 @@
 
 
 </head>
-
+<script>
+  const user = localStorage.user
+  if (user == undefined) {
+    window.location.replace('http://localhost:3333/login')
+  }
+</script>
 <body id="page-top">
 
   <!-- Page Wrapper -->
