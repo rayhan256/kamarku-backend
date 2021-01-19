@@ -25,6 +25,15 @@ class AuthController {
         
         // return auth.authenticator('jwt').withRefreshToken().attempt(email, password)
     }
+
+    async logout({auth, response}) {
+        try {
+            await auth.authenticator('jwt').revokeTokens()
+            return response.json({message: "Admin Logout"})
+        } catch (err) {
+            return response.json({error: "Cant Logout " + err})
+        }
+    }
 }
 
 module.exports = AuthController

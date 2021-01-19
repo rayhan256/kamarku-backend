@@ -15,6 +15,15 @@ class Room extends Model {
     owners() {
         return this.belongsTo('App/Models/Owner', 'owners_id', 'id')
     }
+
+    gallery() {
+        return this.hasMany('App/Models/RoomGallery', 'id', 'rooms_id')
+    }
+
+    amenities() {
+        return this.belongsTo('App/Models/Amenity', 'room_id', 'id')
+    }
+
 }
 
 module.exports = Room

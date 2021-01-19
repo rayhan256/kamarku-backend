@@ -1,0 +1,20 @@
+@include('layouts/header')
+<h1 class="mb-4">View Rooms</h1>
+<div class="row">
+
+    @each(room in rooms)
+    <div class="col-md-3 mt-2 mb-3">
+        <div class="card bg-white shadow rounded">
+            <img src="{{room.gallery[0].image  ? assetsUrl('uploads/rooms/'+room.gallery[0].image) : '/images/kamar.jpg'}}" alt="" class="card-img-top" width="300" height="200">
+            <div class="card-body">
+                <div class="card-title">{{ room.name}}</div>
+                <p class="card-text">
+                    {{room.summary}}
+                </p>
+                <a href="#" class="btn btn-primary">Lihat Detail</a>
+            </div>
+        </div>
+    </div>
+    @endeach
+</div>
+@include('layouts/footer')

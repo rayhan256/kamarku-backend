@@ -41,7 +41,7 @@ class ArticleController {
             return response.redirect('/article')
         }
 
-        articles.save()
+        await articles.save()
         session.flash({notification: "Data Saved"})
         return response.redirect('/article')
     }

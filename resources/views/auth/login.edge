@@ -76,11 +76,15 @@
     fetch('http://localhost:3333/api/auth/login', setup)
       .then(res => res.json())
       .then(user => {
-        localStorage.setItem('user', JSON.stringify(user))
-        
-        window.location.replace('http://localhost:3333/')
+        if (user.message) {
+          alert('Login Falied, ' + user.message)
+        } else {
+          localStorage.setItem('user', JSON.stringify(user))
+          window.location.replace('http://localhost:3333/')
+        }
       })
   })
+
 </script>
 
 @include('auth/footer')

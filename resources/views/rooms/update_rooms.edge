@@ -8,12 +8,16 @@
             <input type="text" name="name" class="form-control" value="{{rooms.name}}">
         </div>
         <div class="form-group">
-            <label for="">Dekorasi</label>
-            <select name="isDecorated" id="" class="form-control">
-                <option value="{{rooms.isDecorated}}">{{rooms.isDecorated == 1 ? 'Ya' : 'Tidak'}}</option>
-                <option value="1">Ya</option>
-                <option value="0">Tidak</option>
-            </select>
+            <label for="">Jumlah Kamar</label>
+            <input type="number" name="total_bedroom" id="" min="1" class="form-control" value="{{rooms.total_bedroom}}">
+        </div>
+        <div class="form-group">
+            <label for="">Jumlah Kamar Mandi</label>
+            <input type="number" name="total_bathroom" id="" min="1" class="form-control" value="{{rooms.total_bathroom}}">
+        </div>
+        <div class="form-group">
+            <label for="">Summary</label>
+            <textarea name="summary" id="" cols="30" class="form-control" rows="10">{{rooms.summary}}</textarea>
         </div>
         <div class="form-group">
             <label for="">Tipe Ruangan</label>
@@ -25,12 +29,9 @@
         </div>
         <div class="form-group">
             <label for="">Harga</label>
-            <input type="number" name="price" id="" class="form-control" value="{{rooms.price}}">
+            <input type="number" name="price" id="" min="1" class="form-control" value="{{rooms.price}}">
         </div>
-        <div class="form-group">
-            <label for="">Fasilitas Tambahan</label>
-            <textarea name="facility" id="" cols="30" rows="10" class="form-control">{{rooms.facility}}</textarea>
-        </div>
+       
         <div class="form-group">
             <label for="">Owner</label>
             <select name="owners_id" class="form-control">

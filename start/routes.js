@@ -16,7 +16,11 @@ Route.get('/', 'DashboardController.index')
 
 //auth
 Route.get('/login', 'AuthController.loginView')
+Route.get('/logout', 'AuthController.logout')
 
+
+//admin 
+Route.get('/admin', 'UserController.index')
 
 //article
 Route.get('/article', 'ArticleController.index')
@@ -42,6 +46,11 @@ Route.get('/owners/update/:id', 'OwnerController.updateView')
 Route.post('/owners/update', 'OwnerController.update')
 Route.get('/owners/delete/:id', 'OwnerController.delete')
 
+//room gallery
+Route.get('/room_gallery', 'RoomGalleryController.index')
+Route.post('/room_gallery/add', 'RoomGalleryController.add')
+Route.get('/view_gallery', 'RoomGalleryController.gallery')
+
 //rooms
 Route.get('/rooms', 'RoomController.index')
 Route.get('/rooms/add', 'RoomController.addView')
@@ -49,4 +58,7 @@ Route.post('/rooms/add/post', 'RoomController.add')
 Route.get('/rooms/update/:id', 'RoomController.updateView')
 Route.post('/rooms/update', 'RoomController.update')
 Route.get('/rooms/delete/:id', 'RoomController.delete')
+
+//amenities
+Route.get('/amenity/:id', 'AmenityController.index')
 

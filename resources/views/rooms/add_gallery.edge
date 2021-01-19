@@ -1,0 +1,23 @@
+@include('layouts/header')
+    <h1 class="mb-4">Add Gallery</h1>
+    <form action="/room_gallery/add" enctype="multipart/form-data" method="post" class="w-50">
+        {{ csrfField() }}
+        <div class="form-group">
+            <label for="">Tambah Gambar</label>
+            <input type="file" name="image" id="" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Deskripsi</label>
+            <textarea name="desc" class="form-control" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="">Untuk Kamar</label>
+            <select name="room_id" id="" class="form-control">
+                @each(room in rooms)
+                <option value="{{room.id}}">{{room.name}}</option>
+                @endeach
+            </select>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+@include('layouts/footer')

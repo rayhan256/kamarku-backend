@@ -23,20 +23,22 @@ class RoomController {
 
     async add({request, response, session}) {
         const name = request.input('name')
-        const isDecorated = request.input('isDecorated')
         const room_types_id = request.input('room_types_id')
         const price = request.input('price')
-        const facility = request.input('facility')
         const owners_id = request.input('owners_id')
+        const total_bedroom = request.input('total_bedroom')
+        const total_bathroom = request.input('total_bathroom')
+        const summary = request.input('summary')
 
         const room = new Room()
-        room.name = name.trim()
+        room.name = name
         room.status = 'Not Booked'
-        room.isDecorated = isDecorated
         room.room_types_id = room_types_id
         room.price = price
-        room.facility = facility
         room.owners_id = owners_id
+        room.summary = summary
+        room.total_bedroom = total_bedroom
+        room.total_bathroom = total_bathroom
 
         await room.save()
         session.flash({notification: "Room Saved"})
@@ -58,20 +60,22 @@ class RoomController {
     async update({request, response, session}) {
         const id = request.input('id')
         const name = request.input('name')
-        const isDecorated = request.input('isDecorated')
         const room_types_id = request.input('room_types_id')
         const price = request.input('price')
-        const facility = request.input('facility')
         const owners_id = request.input('owners_id')
+        const total_bedroom = request.input('total_bedroom')
+        const total_bathroom = request.input('total_bathroom')
+        const summary = request.input('summary')
 
         const room = await Room.find(id)
-        room.name = name.trim()
+        room.name = name ? name : room.name
         room.status = 'Not Booked'
-        room.isDecorated = isDecorated ? isDecorated : room.isDecorated
         room.room_types_id = room_types_id ? room_types_id : room.room_types_id
         room.price = price ? price : room.price
-        room.facility = facility ? facility : room.facility
         room.owners_id = owners_id ? owners_id : room.owners_id
+        room.summary = summary ? summary : room.summary
+        room.total_bedroom = total_bedroom ? total_bedroom : room.total_bedroom
+        room.total_bathroom = total_bathroom ? total_bathroom : room.total_bathroom
 
         await room.save()
         session.flash({notification: "Room Updated"})
