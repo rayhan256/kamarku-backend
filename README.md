@@ -1,6 +1,6 @@
-# Adonis fullstack application
+# Express fullstack application
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+This is the fullstack boilerplate for ExpressJs, it comes pre-configured with.
 
 1. Bodyparser
 2. Session
@@ -13,10 +13,10 @@ This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
 
 ## Setup
 
-Use the adonis command to install the blueprint
+Use the Express command to install the blueprint
 
 ```bash
-adonis new yardstick
+Express new yardstick
 ```
 
 or manually clone the repo and then run `npm install`.
@@ -28,4 +28,6 @@ Run the following command to run startup migrations.
 
 ```js
 adonis migration:run
+
+author Rayhan Rahmat Aziz
 ```
