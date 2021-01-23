@@ -59,6 +59,10 @@ Route.get('/rooms/update/:id', 'RoomController.updateView')
 Route.post('/rooms/update', 'RoomController.update')
 Route.get('/rooms/delete/:id', 'RoomController.delete')
 
+//details
+Route.get('/room_detail/:id', 'RoomController.roomDetail')
+
 //amenities
 Route.get('/amenity/:id', 'AmenityController.index')
+Route.post('/amenity/add', 'AmenityController.add')
 

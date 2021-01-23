@@ -3,12 +3,12 @@
 const Room = use("App/Models/Room")
 const Owner = use("App/Models/Owner")
 const Roomtype = use('App/Models/Roomtype')
-
+const RoomGallery = use('App/Models/RoomGallery')
+const Amenity = use('App/Models/Amenity')
 class RoomController {
     async index({view}) {
         const rooms = await Room.query().with('room_types').with('owners').fetch()
         return view.render('rooms.index', {rooms: rooms.toJSON()})
-        // return room
     }
 
     async addView({view}) {
@@ -87,6 +87,17 @@ class RoomController {
         await room.delete()
         session.flash({notification: "Room Deleted"})
         return response.redirect('/rooms')
+    }
+
+    //getting detail rooms
+    async roomDetail({view, params}) {
+        const detail = await Room.find(params.id)
+        const detailGallery = await RoomGallery.query().where('rooms_id', '=', params.id).fetch()
+        const amenity = await Amenity.query().where('room_id', '=', params.id).first()
+
+       
+        return view.render('details.room_detail', {detail: detail, gambar: detailGallery.toJSON(), amenity: amenity})
+        // return {detail: detail, gambar: detailGallery.toJSON(), amenity: amenity}
     }
 }
 

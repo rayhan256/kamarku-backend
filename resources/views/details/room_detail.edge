@@ -1,0 +1,90 @@
+@include('layouts/header')
+@if(flashMessage('notification'))
+<div class="alert alert-success">
+  {{flashMessage('notification')}}
+</div>
+@endif
+<h1 class="mb-4">Detail Kamar</h1>
+<a href="" class="btn btn-primary mb-3">Add Picture</a>
+<h3 class="mb-3"><strong>Gallery</strong></h3>
+<div class="row bg-white p-3 w-100">
+  @each(value in gambar)
+  <div class="col-md-3">
+    <img src="{{assetsUrl('uploads/rooms/'+value.image)}}" class="img-fluid w-100"
+      style="height: 200px; object-fit:cover; border-radius: 20px 0 20px 0" alt="">
+  </div>
+  @endeach
+</div>
+<h3 class="mt-5"><strong>Summary</strong></h3>
+<div class="row bg-white p-3 w-100">
+  <p>{{detail.summary}}</p>
+</div>
+<h3 class="mt-5"><strong>Amenities</strong></h3>
+<div class="row bg-white p-3 w-100">
+  <div class="wrapper" style="display: flex; flex-direction: row; justify-content: space-between">
+    <div class="col-md-2">
+      <div class="container text-center">
+        <div class="row w-100 h-100">
+          @if(amenity.has_tv)
+          <h6 style="text-align:center">TV</h6>
+          @else
+          <h6 style="text-decoration:line-through;">TV</h6>
+          @endif
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="container text-center">
+        <div class="row w-100 h-100">
+          @if(amenity.has_kitchen)
+          <h6 style="text-align:center">Kitchen</h6>
+          @else
+          <h6 style="text-decoration:line-through;">Kitchen</h6>
+          @endif
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="container text-center">
+        <div class="row w-100 h-100">
+          @if(amenity.has_air_con)
+          <h6 style="text-align:center">Pendingin Ruangan</h6>
+          @else
+          <h6 style="text-decoration:line-through;">Pendingin Ruangan</h6>
+          @endif
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="container text-center">
+        <div class="row w-100 h-100">
+          @if(amenity.has_heating)
+          <h6 style="text-align:center">Air Panas</h6>
+          @else
+          <h6 style="text-decoration:line-through;">Air Panas</h6>
+          @endif
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="container text-center">
+        <div class="row w-100 h-100">
+          @if(amenity.has_internet)
+          <h6 style="text-align:center">Wifi</h6>
+          @else
+          <h6 style="text-decoration:line-through;">Wifi</h6>
+          @endif
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<a href="/amenity/{{detail.id}}" class="btn btn-outline-primary mt-3 mb-3">Add Amenities</a>
+@include('layouts/footer')
+<script>
+  setTimeout(() => {
+    $('.alert').alert('close')
+  }, 3000);
+
+</script>
